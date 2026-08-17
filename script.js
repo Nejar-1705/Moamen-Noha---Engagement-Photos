@@ -1,15 +1,20 @@
-// تشغيل الصوت مع أول لمسة للشاشة لتخطي قيود المتصفح
-const music = document.getElementById('bg-music');
+// 🎵 تشغيل الصوت مع أول لمسة أو ضغطة على الشاشة
 const playAudio = () => {
+  const music = document.getElementById('bg-music');
   if (music) {
-    music.play().catch(() => {});
+    music.play().then(() => {
+      // تم التشغيل بنجاح - إزالة المستمعين
+      document.removeEventListener('click', playAudio);
+      document.removeEventListener('touchstart', playAudio);
+    }).catch((error) => {
+      console.log("Audio play error:", error);
+    });
   }
-  document.removeEventListener('click', playAudio);
-  document.removeEventListener('touchstart', playAudio);
 };
 
 document.addEventListener('click', playAudio);
 document.addEventListener('touchstart', playAudio);
+
 window.addEventListener('DOMContentLoaded', () => {
   const splash = document.getElementById('splash-screen');
   const p1 = document.getElementById('photo1');
