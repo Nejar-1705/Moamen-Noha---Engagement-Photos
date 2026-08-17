@@ -1,3 +1,15 @@
+// تشغيل الصوت مع أول لمسة للشاشة لتخطي قيود المتصفح
+const music = document.getElementById('bg-music');
+const playAudio = () => {
+  if (music) {
+    music.play().catch(() => {});
+  }
+  document.removeEventListener('click', playAudio);
+  document.removeEventListener('touchstart', playAudio);
+};
+
+document.addEventListener('click', playAudio);
+document.addEventListener('touchstart', playAudio);
 window.addEventListener('DOMContentLoaded', () => {
   const splash = document.getElementById('splash-screen');
   const p1 = document.getElementById('photo1');
