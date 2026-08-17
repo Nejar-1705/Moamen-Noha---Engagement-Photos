@@ -5,262 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Moamen & Noha - Engagement Party</title>
   <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
-  
-  <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    body, html {
-      height: 100%;
-      font-family: 'Cairo', sans-serif;
-      overflow-x: hidden;
-    }
-
-    /* 1. الشاشة الافتتاحية (Splash Screen) */
-    #splash-screen {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(135deg, #e0f7fa 0%, #ffffff 50%, #b2ebf2 100%);
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      z-index: 9999;
-      transition: opacity 1.2s ease, visibility 1.2s ease;
-      text-align: center;
-      padding: 20px;
-    }
-
-    .tulip-icon {
-      font-size: 60px;
-      margin-bottom: 10px;
-      animation: float 3s infinite ease-in-out;
-    }
-
-    .splash-title {
-      font-family: 'Alex Brush', cursive;
-      font-size: 3.5rem;
-      color: #00695c;
-      margin-bottom: 10px;
-    }
-
-    .splash-subtitle {
-      font-size: 1.5rem;
-      color: #004d40;
-      letter-spacing: 2px;
-      margin-bottom: 30px;
-    }
-
-    .enter-btn {
-      padding: 12px 35px;
-      font-size: 1.1rem;
-      background-color: #00838f;
-      color: white;
-      border: none;
-      border-radius: 25px;
-      cursor: pointer;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.15);
-      transition: transform 0.2s, background-color 0.2s;
-    }
-
-    .enter-btn:hover {
-      background-color: #006064;
-      transform: scale(1.05);
-    }
-
-    /* 2. الخلفية الأساسية والموقع */
-    #main-content {
-      opacity: 0;
-      transition: opacity 1.5s ease-in-out;
-      min-height: 100vh;
-      background: url('bg.jpg') no-repeat center center fixed;
-      background-size: cover;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: space-between;
-      padding: 40px 20px;
-    }
-
-    #main-content.visible {
-      opacity: 1;
-    }
-
-    /* 3. كارت البحر المتحرك (في المنتصف) */
-    .sea-card {
-      position: relative;
-      width: 100%;
-      max-width: 450px;
-      height: 380px;
-      border-radius: 20px;
-      overflow: hidden;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-      border: 4px solid rgba(255, 255, 255, 0.8);
-      margin-top: 20px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      align-items: center;
-      padding: 20px;
-      text-align: center;
-      color: #00334e;
-    }
-
-    /* أنيميشن تحريك موج البحر داخل الكارت */
-    .sea-card::before {
-      content: "";
-      position: absolute;
-      top: -50%;
-      left: -50%;
-      width: 200%;
-      height: 200%;
-      background: linear-gradient(180deg, rgba(255,255,255,0) 0%, rgba(0, 188, 212, 0.2) 50%, rgba(2, 136, 209, 0.4) 100%);
-      animation: waveMove 8s infinite alternate ease-in-out;
-      z-index: 1;
-    }
-
-    @keyframes waveMove {
-      0% { transform: translateY(0) rotate(0deg); }
-      50% { transform: translateY(-15px) rotate(2deg); }
-      100% { transform: translateY(0) rotate(-2deg); }
-    }
-
-    .card-body {
-      position: relative;
-      z-index: 2;
-      width: 100%;
-      background: rgba(255, 255, 255, 0.65);
-      backdrop-filter: blur(5px);
-      border-radius: 15px;
-      padding: 15px;
-    }
-
-    /* 4. العداد التنازلي */
-    .countdown-title {
-      font-size: 1.1rem;
-      font-weight: 700;
-      margin-bottom: 10px;
-    }
-
-    .timer {
-      display: flex;
-      justify-content: center;
-      gap: 12px;
-      margin-bottom: 15px;
-    }
-
-    .timer-box {
-      background: #ffffff;
-      padding: 8px 12px;
-      border-radius: 10px;
-      min-width: 55px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-    }
-
-    .timer-box span {
-      display: block;
-      font-size: 1.3rem;
-      font-weight: bold;
-      color: #00838f;
-    }
-
-    .timer-box p {
-      font-size: 0.75rem;
-      color: #555;
-    }
-
-    /* زر اللوكيشن */
-    .location-btn {
-      display: inline-block;
-      position: relative;
-      z-index: 2;
-      background: #00838f;
-      color: white;
-      text-decoration: none;
-      padding: 10px 20px;
-      border-radius: 20px;
-      font-weight: bold;
-      font-size: 0.95rem;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-      transition: background 0.3s;
-    }
-
-    .location-btn:hover {
-      background: #004d40;
-    }
-
-    /* زر رفع الصور (يظهر بعد انتهاء العداد) */
-    .upload-section {
-      display: none;
-      margin-bottom: 10px;
-    }
-
-    .upload-btn {
-      background-color: #2e7d32;
-      color: white;
-      border: none;
-      padding: 10px 20px;
-      border-radius: 20px;
-      cursor: pointer;
-      font-size: 0.95rem;
-      font-weight: bold;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-    }
-
-    /* 5. إطارات الصور الاربعة بالأسفل */
-    .photos-grid {
-      display: flex;
-      justify-content: center;
-      gap: 15px;
-      width: 100%;
-      max-width: 600px;
-      margin-top: 30px;
-      flex-wrap: wrap;
-    }
-
-    .photo-frame {
-      width: 110px;
-      height: 140px;
-      background: white;
-      padding: 6px;
-      border-radius: 8px;
-      box-shadow: 0 6px 15px rgba(0,0,0,0.25);
-      border: 2px solid #d4af37; /* لمسة ذهبية بسيطة كالإطار */
-      transform: rotate(-2deg);
-      transition: transform 0.3s ease;
-    }
-
-    .photo-frame:nth-child(even) {
-      transform: rotate(2deg);
-    }
-
-    .photo-frame:hover {
-      transform: scale(1.1) rotate(0deg);
-      z-index: 10;
-    }
-
-    .photo-frame img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      border-radius: 4px;
-    }
-
-    @keyframes float {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-10px); }
-    }
-  </style>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-  <!-- شاشة البداية (Splash Screen) -->
+  <!-- الشاشة الافتتاحية -->
   <div id="splash-screen">
     <div class="tulip-icon">🌷</div>
     <h1 class="splash-title">Moamen & Noha</h1>
@@ -268,14 +17,14 @@
     <button class="enter-btn" onclick="openSite()">ادخل الدعوة ✨</button>
   </div>
 
-  <!-- المحتوى الرئيسي للموقع -->
+  <!-- المحتوى الرئيسي -->
   <div id="main-content">
     
     <!-- كارت البحر المتحرك -->
     <div class="sea-card">
       <div class="card-body">
         
-        <!-- قسم العداد التنازلي -->
+        <!-- العداد التنازلي -->
         <div id="countdown-wrapper">
           <div class="countdown-title">⏳ المتبقي على يومنا المميز</div>
           <div class="timer">
@@ -286,12 +35,12 @@
           </div>
         </div>
 
-        <!-- قسم رفع الصور (يظهر تلقائياً بعد انتهاء العد التنازلي) -->
+        <!-- زر رفع الصور -->
         <div id="upload-section" class="upload-section">
           <p style="margin-bottom: 8px; font-weight: bold;">شاركونا صوركم الذكرى! 📸</p>
-          <input type="file" id="file-input" multiple accept="image/*" style="display: none;" onchange="handleFiles(this.files)">
+          <input type="file" id="file-input" multiple accept="image/*" style="display: none;" onchange="handleFileUpload(this.files)">
           <button class="upload-btn" onclick="document.getElementById('file-input').click()">رفع الصور 📤</button>
-          <p id="upload-status" style="font-size: 0.8rem; margin-top: 5px; color: #2e7d32;"></p>
+          <p id="upload-status" class="upload-status"></p>
         </div>
 
       </div>
@@ -302,7 +51,7 @@
       </a>
     </div>
 
-    <!-- إطارات الصور الأربعة بالأسفل -->
+    <!-- إطارات الصور بالأسفل -->
     <div class="photos-grid">
       <div class="photo-frame"><img src="photo1.jpg" alt="Photo 1"></div>
       <div class="photo-frame"><img src="photo2.jpg" alt="Photo 2"></div>
@@ -312,52 +61,6 @@
 
   </div>
 
-  <script>
-    // 1. الانتقال من الـ Splash Screen إلى الموقع
-    function openSite() {
-      const splash = document.getElementById('splash-screen');
-      const main = document.getElementById('main-content');
-      
-      splash.style.opacity = '0';
-      splash.style.visibility = 'hidden';
-      
-      setTimeout(() => {
-        main.classList.add('visible');
-      }, 300);
-    }
-
-    // 2. العداد التنازلي ليوم 21 أغسطس 2026
-    const targetDate = new Date("August 21, 2026 00:00:00").getTime();
-
-    const countdownInterval = setInterval(() => {
-      const now = new Date().getTime();
-      const difference = targetDate - now;
-
-      if (difference > 0) {
-        const days = Math.floor(difference / (1000 * 60 * 60 * 24));
-        const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
-        const seconds = Math.floor((difference % (1000 * 60)) / 1000);
-
-        document.getElementById("days").innerText = days.toString().padStart(2, '0');
-        document.getElementById("hours").innerText = hours.toString().padStart(2, '0');
-        document.getElementById("minutes").innerText = minutes.toString().padStart(2, '0');
-        document.getElementById("seconds").innerText = seconds.toString().padStart(2, '0');
-      } else {
-        // انتهى العد التنازلي
-        clearInterval(countdownInterval);
-        document.getElementById("countdown-wrapper").style.display = "none";
-        document.getElementById("upload-section").style.display = "block";
-      }
-    }, 1000);
-
-    // 3. معالجة رفع الصور
-    function handleFiles(files) {
-      if (files.length > 0) {
-        document.getElementById("upload-status").innerText = `تم اختيار ${files.length} صورة بنجاح!`;
-      }
-    }
-  </script>
+  <script src="scripts.js"></script>
 </body>
 </html>
-
