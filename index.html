@@ -3,39 +3,58 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mo'men & Noha Engagement</title>
-  <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+  <title>Mo'men & Noha - Engagement Party</title>
+  <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Cormorant+Garamond:wght@400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-  <!-- شاشة الترحيب -->
+  <!-- شاشة الترحيب (تختفي أوتوماتيك) -->
   <div id="splash-screen">
-    <h1 class="splash-title">Mo'men & Noha</h1>
-    <h2 class="splash-subtitle">Engagement Party</h2>
+    <div class="tulip-icon">🌷</div>
+    <h1 class="splash-names">Mo'men & Noha</h1>
+    <p class="splash-sub">Engagement Party</p>
   </div>
 
-  <!-- المحتوى الرئيسي -->
-  <div class="main-container">
-    <div class="card-content">
+  <!-- المحتوى الرئيسي (بيظهر بـ Fade-in) -->
+  <div id="main-content" class="hidden">
+    <div class="invitation-card">
       <h1 class="names">Mo'men & Noha</h1>
-      <h2 class="event-title">Engagement Party</h2>
+      <h2 class="subtitle">ENGAGEMENT PARTY</h2>
       
-      <div id="countdown" class="countdown">
-        <div class="time-block"><span id="days">00</span><small>Days</small></div>
-        <div class="time-block"><span id="hours">00</span><small>Hours</small></div>
-        <div class="time-block"><span id="minutes">00</span><small>Mins</small></div>
+      <div class="divider">✦</div>
+
+      <!-- العداد التنازلي -->
+      <div id="countdown-wrapper">
+        <p class="countdown-label">Counting down to our special day</p>
+        <div class="timer">
+          <div class="time-box"><span id="days">00</span><p>Days</p></div>
+          <div class="time-box"><span id="hours">00</span><p>Hours</p></div>
+          <div class="time-box"><span id="minutes">00</span><p>Mins</p></div>
+          <div class="time-box"><span id="seconds">00</span><p>Secs</p></div>
+        </div>
       </div>
 
-      <a href="https://maps.app.goo.gl/kTk7X2qQ9ygJhDsW7" target="_blank" class="loc-btn">📍 Event Location</a>
+      <!-- قسم رفع الصور (يظهر بعد العداد) -->
+      <div id="upload-section" class="upload-section hidden">
+        <p class="upload-title">Share your photos with us! 📸</p>
+        <input type="file" id="file-input" multiple accept="image/*" class="hidden" onchange="handleFileUpload(this.files)">
+        <button class="upload-btn" onclick="document.getElementById('file-input').click()">Upload Photos 📤</button>
+        <p id="upload-status" class="upload-status"></p>
+      </div>
+
+      <!-- رابط اللوكيشن -->
+      <a href="https://maps.app.goo.gl/kTk7X2qQ9ygJhDsW7" target="_blank" class="location-link">
+        📍 Event Location
+      </a>
     </div>
 
-    <!-- الصور الـ 4 -->
-    <div class="gallery">
-      <img src="photo1.jpg" alt="Photo 1">
-      <img src="photo2.jpg" alt="Photo 2">
-      <img src="photo3.jpg" alt="Photo 3">
-      <img src="photo4.jpg" alt="Photo 4">
+    <!-- الإطارات الأربعة للصور تحت -->
+    <div class="photo-frames-container">
+      <div class="frame frame-1"><img src="photo1.jpg" alt="Photo 1"></div>
+      <div class="frame frame-2"><img src="photo2.jpg" alt="Photo 2"></div>
+      <div class="frame frame-3"><img src="photo3.jpg" alt="Photo 3"></div>
+      <div class="frame frame-4"><img src="photo4.jpg" alt="Photo 4"></div>
     </div>
   </div>
 
