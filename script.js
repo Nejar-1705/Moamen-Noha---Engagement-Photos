@@ -8,30 +8,30 @@ window.addEventListener('DOMContentLoaded', () => {
   const names = document.getElementById('glitter-names');
   const details = document.getElementById('card-details');
 
-  // 1. اختفاء شاشة الترحيب بعد 2 ثانية
+  // 1. اختفاء شاشة الترحيب
   setTimeout(() => {
     splash.style.opacity = '0';
     setTimeout(() => splash.style.display = 'none', 1000);
 
-    // 2. ظهور الصور في منتصف الشاشة بالتتابع (ثانية لكل صورة ما عدا الأخيرة ثانية ونصف)
+    // 2. عرض الصور كبيرة في منتصف الشاشة
     setTimeout(() => { p1.classList.add('show-element'); }, 200);
 
     setTimeout(() => {
       p1.style.opacity = '0';
       p2.classList.add('show-element');
-    }, 1200);
+    }, 1300);
 
     setTimeout(() => {
       p2.style.opacity = '0';
       p3.classList.add('show-element');
-    }, 2200);
+    }, 2400);
 
     setTimeout(() => {
       p3.style.opacity = '0';
       p4.classList.add('show-element');
-    }, 3200);
+    }, 3500);
 
-    // 3. تحرك جميع الصور لأماكنها في الأركان مع ظهورهم معاً
+    // 3. انكماش الصور وانتقالهم للأركان معاً
     setTimeout(() => {
       p1.style.opacity = '1';
       p2.style.opacity = '1';
@@ -46,22 +46,22 @@ window.addEventListener('DOMContentLoaded', () => {
       p2.classList.add('pos-bottom-left-2');
       p3.classList.add('pos-top-right-1');
       p4.classList.add('pos-top-right-2');
-    }, 4700);
+    }, 5000);
 
-    // 4. ظهور الكارت الخلفية في المنتصف
+    // 4. ظهور كارت الدعوة الرئيسي في النص
     setTimeout(() => {
       card.classList.add('show-element');
-    }, 5600);
+    }, 6000);
 
-    // 5. ظهور الاسم بـ Fade In وتأثير الجليتر الأسود
+    // 5. ظهور الأسماء بالجليتر
     setTimeout(() => {
       names.classList.add('show-element');
-    }, 6600);
+    }, 7000);
 
     // 6. ظهور باقي التفاصيل والعداد
     setTimeout(() => {
       details.classList.add('show-element');
-    }, 7600);
+    }, 8000);
 
   }, 2000);
 });
