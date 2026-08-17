@@ -1,112 +1,20 @@
-* { margin: 0; padding: 0; box-sizing: border-box; }
+body { background: url('bg.jpg') no-repeat center center fixed; background-size: cover; height: 100vh; display: flex; align-items: center; justify-content: center; overflow: hidden; }
 
-body, html {
-  height: 100%;
-  font-family: 'Cormorant Garamond', serif;
-  color: #000000;
-  overflow-x: hidden;
-}
+/* شاشة الترحيب */
+#splash-screen { position: fixed; inset: 0; background: #00334e; display: flex; justify-content: center; align-items: center; z-index: 100; transition: opacity 1s; }
+#splash-screen h1 { color: white; font-family: 'Alex Brush', cursive; font-size: 3rem; }
 
-.hidden { display: none !important; }
+/* الأركان للصور */
+.photo-container { position: absolute; display: flex; gap: 10px; opacity: 0; transition: opacity 1s; }
+.bl { bottom: 20px; left: 20px; }
+.tr { top: 20px; right: 20px; }
+.photo-wrapper { position: relative; width: 80px; }
+.photo-wrapper img { width: 100%; border: 2px solid white; box-shadow: 0 4px 8px rgba(0,0,0,0.3); }
+.pin { position: absolute; top: -10px; left: -10px; z-index: 10; font-size: 20px; }
 
-/* شاشة الترحيب بلون البحر */
-#splash-screen {
-  position: fixed;
-  inset: 0;
-  background: linear-gradient(135deg, #006994 0%, #00334e 100%);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  z-index: 9999;
-  transition: opacity 1s ease;
-}
-
-.tulip-icon { font-size: 65px; margin-bottom: 15px; filter: brightness(0) invert(1); }
-.splash-names { font-family: 'Alex Brush', cursive; font-size: 3.5rem; color: #ffffff; }
-.splash-sub { font-size: 1.1rem; letter-spacing: 3px; text-transform: uppercase; color: #e0f7fa; }
-
-/* المحتوى الرئيسي */
-#main-content {
-  min-height: 100vh;
-  background: url('bg.jpg') no-repeat center center fixed;
-  background-size: cover;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
-  padding: 30px 15px;
-  opacity: 0;
-  transition: opacity 1s ease;
-}
-
-#main-content.fade-in { opacity: 1; }
-
-.invitation-card {
-  background: rgba(255, 255, 255, 0.88);
-  backdrop-filter: blur(8px);
-  border-radius: 12px;
-  padding: 30px 20px;
-  width: 100%;
-  max-width: 400px;
-  text-align: center;
-  margin-top: 10px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-}
-
-.names { font-family: 'Alex Brush', cursive; font-size: 3rem; color: #000; }
-.subtitle { font-size: 1rem; letter-spacing: 2px; text-transform: uppercase; margin-top: 5px; }
-.divider { font-size: 1rem; margin: 10px 0; }
-
-.countdown-label { font-size: 0.9rem; margin-bottom: 10px; font-style: italic; }
-.timer { display: flex; justify-content: center; gap: 10px; margin-bottom: 15px; }
-.time-box { background: #fff; border: 1px solid #000; border-radius: 6px; padding: 6px 8px; min-width: 55px; }
-.time-box span { font-size: 1.2rem; font-weight: bold; }
-.time-box p { font-size: 0.65rem; text-transform: uppercase; }
-
-.location-link {
-  display: inline-block; color: #000; text-decoration: none; font-size: 0.9rem;
-  font-weight: bold; border: 1.5px solid #000; padding: 8px 20px; border-radius: 20px;
-}
-
-/* توزيع الصور تحت */
-.bottom-photos-container {
-  display: flex;
-  justify-content: space-between;
-  width: 100%;
-  max-width: 500px;
-  margin-top: 25px;
-  padding: 0 10px;
-}
-
-.photo-group { display: flex; gap: 10px; }
-
-.frame {
-  width: 90px;
-  height: 120px;
-  background: #fff;
-  padding: 5px;
-  border-radius: 4px;
-  border: 1.5px solid #d4af37;
-  box-shadow: 0 6px 15px rgba(0,0,0,0.3);
-  opacity: 0;
-  transform: scale(0.5);
-  transition: opacity 0.8s ease, transform 0.8s ease;
-}
-
-.frame img { width: 100%; height: 100%; object-fit: cover; }
-
-/* ميل خفيف للصور لإعطاء مظهر أنيق */
-.photo-1 { transform: rotate(-4deg) scale(0.5); }
-.photo-2 { transform: rotate(3deg) scale(0.5); }
-.photo-3 { transform: rotate(-3deg) scale(0.5); }
-.photo-4 { transform: rotate(4deg) scale(0.5); }
-
-.frame.show {
-  opacity: 1;
-}
-
-.photo-1.show { transform: rotate(-4deg) scale(1); }
-.photo-2.show { transform: rotate(3deg) scale(1); }
-.photo-3.show { transform: rotate(-3deg) scale(1); }
-.photo-4.show { transform: rotate(4deg) scale(1); }
+/* الكارد اللي في النص */
+#central-card { background: rgba(255, 255, 255, 0.9); padding: 40px; border-radius: 20px; text-align: center; box-shadow: 0 10px 30px rgba(0,0,0,0.3); transition: opacity 1s; }
+#names-glitter { font-family: 'Alex Brush', cursive; font-size: 3.5rem; color: #000; text-shadow: 2px 2px 5px rgba(0,0,0,0.3); background: linear-gradient(90deg, #000, #555, #000); -webkit-background-clip: text; color: transparent; margin-bottom: 20px; }
+.timer { font-size: 1.5rem; margin: 15px 0; }
+.btn { text-decoration: none; color: #000; border: 1px solid #000; padding: 10px 20px; border-radius: 20px; display: inline-block; }
+.hidden { opacity: 0; }
