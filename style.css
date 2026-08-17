@@ -49,14 +49,14 @@ body, html {
 /* 2. تصميم الصور والـ White Tulip Pin */
 .photo-card {
   position: fixed;
-  width: 130px;
-  height: 175px;
+  width: 120px;
+  height: 160px;
   background: #ffffff;
   padding: 6px;
   border-radius: 6px;
   border: 2px solid #ffffff;
   box-shadow: 0 10px 25px rgba(0,0,0,0.35);
-  transition: all 0.9s cubic-bezier(0.25, 1, 0.5, 1);
+  transition: all 1s cubic-bezier(0.25, 1, 0.5, 1);
   z-index: 50;
   opacity: 0;
 }
@@ -68,51 +68,53 @@ body, html {
   border-radius: 3px;
 }
 
-/* الوردة التوليب البيضاء لـ Pin الصور */
 .white-pin {
   position: absolute;
   top: -12px;
   left: 50%;
   transform: translateX(-50%);
-  font-size: 24px;
+  font-size: 22px;
   filter: brightness(0) invert(1) drop-shadow(0 2px 4px rgba(0,0,0,0.6));
   z-index: 60;
 }
 
-/* موقع الصور في منتصف الشاشة */
+/* موقع الصور وهي كبيرة في منتصف الشاشة */
 .center-stage {
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%) scale(1.1);
+  top: 50% !important;
+  left: 50% !important;
+  right: auto !important;
+  bottom: auto !important;
+  transform: translate(-50%, -50%) scale(1.8) !important;
+  z-index: 100 !important;
 }
 
-/* مواضع الصور في الأركان (2 تحت شمال، 2 فوق يمين) */
+/* تصغير الصور وانتقالها للأركان */
 .pos-bottom-left-1 {
   top: auto !important;
   left: 15px !important;
   bottom: 20px !important;
-  transform: rotate(-5deg) scale(0.9);
+  transform: rotate(-5deg) scale(0.85) !important;
 }
 
 .pos-bottom-left-2 {
   top: auto !important;
-  left: 130px !important;
+  left: 105px !important;
   bottom: 20px !important;
-  transform: rotate(3deg) scale(0.9);
+  transform: rotate(3deg) scale(0.85) !important;
 }
 
 .pos-top-right-1 {
   top: 20px !important;
   left: auto !important;
-  right: 130px !important;
-  transform: rotate(-3deg) scale(0.9);
+  right: 105px !important;
+  transform: rotate(-3deg) scale(0.85) !important;
 }
 
 .pos-top-right-2 {
   top: 20px !important;
   left: auto !important;
   right: 15px !important;
-  transform: rotate(4deg) scale(0.9);
+  transform: rotate(4deg) scale(0.85) !important;
 }
 
 /* 3. الكارت الرئيسي في المنتصف */
@@ -186,7 +188,6 @@ body, html {
   opacity: 1 !important;
 }
 
-/* لضمان تناسق الأحجام على الشاشات الصغيرة */
 @media (max-width: 480px) {
   .photo-card { width: 95px; height: 130px; }
   .pos-bottom-left-2 { left: 90px !important; }
