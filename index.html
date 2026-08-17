@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,56 +9,44 @@
 </head>
 <body>
 
-  <!-- الشاشة الافتتاحية -->
   <div id="splash-screen">
     <div class="tulip-icon">🌷</div>
     <h1 class="splash-title">Moamen & Noha</h1>
     <h2 class="splash-subtitle">Engagement Party</h2>
-    <button class="enter-btn" onclick="openSite()">ادخل الدعوة ✨</button>
+    <button class="enter-btn" onclick="openSite()">Enter Invitation ✨</button>
   </div>
 
-  <!-- المحتوى الرئيسي -->
   <div id="main-content">
-    
-    <!-- كارت البحر المتحرك -->
     <div class="sea-card">
       <div class="card-body">
-        
-        <!-- العداد التنازلي -->
         <div id="countdown-wrapper">
-          <div class="countdown-title">⏳ المتبقي على يومنا المميز</div>
+          <div class="countdown-title">⏳ Time Until Our Big Day</div>
           <div class="timer">
-            <div class="timer-box"><span id="days">00</span><p>يوم</p></div>
-            <div class="timer-box"><span id="hours">00</span><p>ساعة</p></div>
-            <div class="timer-box"><span id="minutes">00</span><p>دقيقة</p></div>
-            <div class="timer-box"><span id="seconds">00</span><p>ثانية</p></div>
+            <div class="timer-box"><span id="days">00</span><p>Days</p></div>
+            <div class="timer-box"><span id="hours">00</span><p>Hours</p></div>
+            <div class="timer-box"><span id="minutes">00</span><p>Mins</p></div>
+            <div class="timer-box"><span id="seconds">00</span><p>Secs</p></div>
           </div>
         </div>
 
-        <!-- زر رفع الصور -->
         <div id="upload-section" class="upload-section">
-          <p style="margin-bottom: 8px; font-weight: bold;">شاركونا صوركم الذكرى! 📸</p>
+          <p style="margin-bottom: 8px; font-weight: bold;">Share your photos with us! 📸</p>
           <input type="file" id="file-input" multiple accept="image/*" style="display: none;" onchange="handleFileUpload(this.files)">
-          <button class="upload-btn" onclick="document.getElementById('file-input').click()">رفع الصور 📤</button>
+          <button class="upload-btn" onclick="document.getElementById('file-input').click()">Upload Photos 📤</button>
           <p id="upload-status" class="upload-status"></p>
         </div>
-
       </div>
-
-      <!-- رابط اللوكيشن -->
       <a href="https://maps.app.goo.gl/kTk7X2qQ9ygJhDsW7" target="_blank" class="location-btn">
-        📍 مكان الحفل (Google Maps)
+        📍 Event Location
       </a>
     </div>
 
-    <!-- إطارات الصور بالأسفل -->
     <div class="photos-grid">
       <div class="photo-frame"><img src="photo1.jpg" alt="Photo 1"></div>
       <div class="photo-frame"><img src="photo2.jpg" alt="Photo 2"></div>
       <div class="photo-frame"><img src="photo3.jpg" alt="Photo 3"></div>
       <div class="photo-frame"><img src="photo4.jpg" alt="Photo 4"></div>
     </div>
-
   </div>
 
   <script src="scripts.js"></script>
