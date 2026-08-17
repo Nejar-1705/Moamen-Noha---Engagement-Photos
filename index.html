@@ -2,34 +2,45 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Mo'men & Noha</title>
-  <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Cormorant+Garamond:wght@400;600&display=swap" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mo'men & Noha - Engagement</title>
+  <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Cormorant+Garamond:wght@400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-  <!-- شاشة الترحيب -->
-  <div id="splash-screen"><h1>Mo'men & Noha</h1></div>
-
-  <!-- الصور (ستظهر في الأركان) -->
-  <div class="photo-container bl">
-    <div class="photo-wrapper"><span class="pin">🌷</span><img src="photo1.jpg"></div>
-    <div class="photo-wrapper"><span class="pin">🌷</span><img src="photo2.jpg"></div>
-  </div>
-  <div class="photo-container tr">
-    <div class="photo-wrapper"><span class="pin">🌷</span><img src="photo3.jpg"></div>
-    <div class="photo-wrapper"><span class="pin">🌷</span><img src="photo4.jpg"></div>
+  <!-- شاشة الترحيب بلون البحر والتوليب وكلمة إنجاجمينت بارتي -->
+  <div id="splash-screen">
+    <div class="splash-tulip">🌷</div>
+    <h1 class="splash-names">Mo'men & Noha</h1>
+    <p class="splash-sub">Engagement Party</p>
   </div>
 
-  <!-- المحتوى الرئيسي (في النص) -->
-  <div id="central-card" class="hidden">
-    <div id="names-glitter" class="hidden">Mo'men & Noha</div>
-    <div id="details" class="hidden">
-      <p>Engagement Party</p>
+  <!-- الصور الـ 4 (تبدأ في منتصف الشاشة بحجم كبير) -->
+  <div id="photo1" class="photo-card center-stage"><span class="white-pin">🌷</span><img src="photo1.jpg" alt="1"></div>
+  <div id="photo2" class="photo-card center-stage"><span class="white-pin">🌷</span><img src="photo2.jpg" alt="2"></div>
+  <div id="photo3" class="photo-card center-stage"><span class="white-pin">🌷</span><img src="photo3.jpg" alt="3"></div>
+  <div id="photo4" class="photo-card center-stage"><span class="white-pin">🌷</span><img src="photo4.jpg" alt="4"></div>
+
+  <!-- الكارت الرئيسي والكلام في نص الشاشة تماماً -->
+  <div id="central-card" class="hidden-element">
+    <!-- الاسم بالجليتر الأسود -->
+    <h1 id="glitter-names" class="glitter-text hidden-element">Mo'men & Noha</h1>
+    
+    <!-- باقي التفاصيل -->
+    <div id="card-details" class="hidden-element">
+      <h2 class="sub-title">ENGAGEMENT PARTY</h2>
+      <div class="divider">✦</div>
+      <p class="countdown-label">Counting down to our special day</p>
+      
       <div class="timer">
-        <span id="days">00</span>D : <span id="hours">00</span>H : <span id="mins">00</span>M
+        <div class="time-box"><span id="days">00</span><p>Days</p></div>
+        <div class="time-box"><span id="hours">00</span><p>Hours</p></div>
+        <div class="time-box"><span id="minutes">00</span><p>Mins</p></div>
+        <div class="time-box"><span id="seconds">00</span><p>Secs</p></div>
       </div>
-      <a href="https://maps.app.goo.gl/kTk7X2qQ9ygJhDsW7" class="btn">📍 Location</a>
+
+      <a href="https://maps.app.goo.gl/kTk7X2qQ9ygJhDsW7" target="_blank" class="location-btn">📍 Event Location</a>
     </div>
   </div>
 
