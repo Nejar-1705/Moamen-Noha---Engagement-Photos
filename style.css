@@ -1,20 +1,195 @@
-body { background: url('bg.jpg') no-repeat center center fixed; background-size: cover; height: 100vh; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+* { margin: 0; padding: 0; box-sizing: border-box; }
 
-/* شاشة الترحيب */
-#splash-screen { position: fixed; inset: 0; background: #00334e; display: flex; justify-content: center; align-items: center; z-index: 100; transition: opacity 1s; }
-#splash-screen h1 { color: white; font-family: 'Alex Brush', cursive; font-size: 3rem; }
+body, html {
+  height: 100%;
+  width: 100%;
+  font-family: 'Cormorant Garamond', serif;
+  color: #000000;
+  overflow: hidden;
+  background: url('bg.jpg') no-repeat center center fixed;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
-/* الأركان للصور */
-.photo-container { position: absolute; display: flex; gap: 10px; opacity: 0; transition: opacity 1s; }
-.bl { bottom: 20px; left: 20px; }
-.tr { top: 20px; right: 20px; }
-.photo-wrapper { position: relative; width: 80px; }
-.photo-wrapper img { width: 100%; border: 2px solid white; box-shadow: 0 4px 8px rgba(0,0,0,0.3); }
-.pin { position: absolute; top: -10px; left: -10px; z-index: 10; font-size: 20px; }
+/* 1. شاشة الترحيب بلون البحر */
+#splash-screen {
+  position: fixed;
+  inset: 0;
+  background: linear-gradient(135deg, #006994 0%, #00334e 100%);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  transition: opacity 1s ease;
+}
 
-/* الكارد اللي في النص */
-#central-card { background: rgba(255, 255, 255, 0.9); padding: 40px; border-radius: 20px; text-align: center; box-shadow: 0 10px 30px rgba(0,0,0,0.3); transition: opacity 1s; }
-#names-glitter { font-family: 'Alex Brush', cursive; font-size: 3.5rem; color: #000; text-shadow: 2px 2px 5px rgba(0,0,0,0.3); background: linear-gradient(90deg, #000, #555, #000); -webkit-background-clip: text; color: transparent; margin-bottom: 20px; }
-.timer { font-size: 1.5rem; margin: 15px 0; }
-.btn { text-decoration: none; color: #000; border: 1px solid #000; padding: 10px 20px; border-radius: 20px; display: inline-block; }
-.hidden { opacity: 0; }
+.splash-tulip {
+  font-size: 70px;
+  margin-bottom: 10px;
+  filter: brightness(0) invert(1) drop-shadow(0 2px 8px rgba(255,255,255,0.4));
+}
+
+.splash-names {
+  font-family: 'Alex Brush', cursive;
+  font-size: 3.8rem;
+  color: #ffffff;
+}
+
+.splash-sub {
+  font-size: 1.2rem;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: #e0f7fa;
+  margin-top: 5px;
+}
+
+/* 2. تصميم الصور والـ White Tulip Pin */
+.photo-card {
+  position: fixed;
+  width: 130px;
+  height: 175px;
+  background: #ffffff;
+  padding: 6px;
+  border-radius: 6px;
+  border: 2px solid #ffffff;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.35);
+  transition: all 0.9s cubic-bezier(0.25, 1, 0.5, 1);
+  z-index: 50;
+  opacity: 0;
+}
+
+.photo-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 3px;
+}
+
+/* الوردة التوليب البيضاء لـ Pin الصور */
+.white-pin {
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 24px;
+  filter: brightness(0) invert(1) drop-shadow(0 2px 4px rgba(0,0,0,0.6));
+  z-index: 60;
+}
+
+/* موقع الصور في منتصف الشاشة */
+.center-stage {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(1.1);
+}
+
+/* مواضع الصور في الأركان (2 تحت شمال، 2 فوق يمين) */
+.pos-bottom-left-1 {
+  top: auto !important;
+  left: 15px !important;
+  bottom: 20px !important;
+  transform: rotate(-5deg) scale(0.9);
+}
+
+.pos-bottom-left-2 {
+  top: auto !important;
+  left: 130px !important;
+  bottom: 20px !important;
+  transform: rotate(3deg) scale(0.9);
+}
+
+.pos-top-right-1 {
+  top: 20px !important;
+  left: auto !important;
+  right: 130px !important;
+  transform: rotate(-3deg) scale(0.9);
+}
+
+.pos-top-right-2 {
+  top: 20px !important;
+  left: auto !important;
+  right: 15px !important;
+  transform: rotate(4deg) scale(0.9);
+}
+
+/* 3. الكارت الرئيسي في المنتصف */
+#central-card {
+  background: rgba(255, 255, 255, 0.88);
+  backdrop-filter: blur(10px);
+  border-radius: 16px;
+  padding: 35px 25px;
+  width: 90%;
+  max-width: 420px;
+  text-align: center;
+  box-shadow: 0 15px 35px rgba(0,0,0,0.25);
+  z-index: 20;
+  transition: opacity 1s ease;
+}
+
+/* تأثير الجليتر الأسود على الأسماء */
+.glitter-text {
+  font-family: 'Alex Brush', cursive;
+  font-size: 3.5rem;
+  background: linear-gradient(135deg, #000000 0%, #434343 25%, #111111 40%, #ffffff 50%, #000000 60%, #222222 75%, #000000 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: glitterShine 3s linear infinite;
+  margin-bottom: 10px;
+}
+
+@keyframes glitterShine {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.sub-title {
+  font-size: 1.1rem;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: #000000;
+  font-weight: 700;
+}
+
+.divider { font-size: 1rem; margin: 10px 0; color: #333; }
+.countdown-label { font-size: 0.95rem; margin-bottom: 12px; font-style: italic; color: #000; }
+
+.timer { display: flex; justify-content: center; gap: 10px; margin-bottom: 20px; }
+.time-box { background: #ffffff; border: 1.5px solid #000000; border-radius: 8px; padding: 6px 10px; min-width: 58px; }
+.time-box span { font-size: 1.3rem; font-weight: bold; color: #000; }
+.time-box p { font-size: 0.7rem; text-transform: uppercase; color: #000; font-weight: 600; }
+
+.location-btn {
+  display: inline-block;
+  color: #ffffff;
+  background: #000000;
+  text-decoration: none;
+  font-size: 0.95rem;
+  font-weight: bold;
+  padding: 10px 24px;
+  border-radius: 25px;
+  transition: transform 0.2s ease;
+}
+
+.location-btn:hover { transform: scale(1.05); }
+
+.hidden-element {
+  opacity: 0;
+  transition: opacity 1s ease;
+}
+
+.show-element {
+  opacity: 1 !important;
+}
+
+/* لضمان تناسق الأحجام على الشاشات الصغيرة */
+@media (max-width: 480px) {
+  .photo-card { width: 95px; height: 130px; }
+  .pos-bottom-left-2 { left: 90px !important; }
+  .pos-top-right-1 { right: 90px !important; }
+  .glitter-text { font-size: 2.8rem; }
+}
