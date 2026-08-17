@@ -3,28 +3,26 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mo'men & Noha - Engagement Party</title>
+  <title>Mo'men & Noha Engagement</title>
   <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Cormorant+Garamond:wght@400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-  <!-- شاشة الترحيب (تختفي أوتوماتيك) -->
+  <!-- شاشة الترحيب بلون البحر -->
   <div id="splash-screen">
     <div class="tulip-icon">🌷</div>
     <h1 class="splash-names">Mo'men & Noha</h1>
     <p class="splash-sub">Engagement Party</p>
   </div>
 
-  <!-- المحتوى الرئيسي (بيظهر بـ Fade-in) -->
+  <!-- المحتوى الرئيسي -->
   <div id="main-content" class="hidden">
     <div class="invitation-card">
       <h1 class="names">Mo'men & Noha</h1>
       <h2 class="subtitle">ENGAGEMENT PARTY</h2>
-      
       <div class="divider">✦</div>
 
-      <!-- العداد التنازلي -->
       <div id="countdown-wrapper">
         <p class="countdown-label">Counting down to our special day</p>
         <div class="timer">
@@ -35,26 +33,19 @@
         </div>
       </div>
 
-      <!-- قسم رفع الصور (يظهر بعد العداد) -->
-      <div id="upload-section" class="upload-section hidden">
-        <p class="upload-title">Share your photos with us! 📸</p>
-        <input type="file" id="file-input" multiple accept="image/*" class="hidden" onchange="handleFileUpload(this.files)">
-        <button class="upload-btn" onclick="document.getElementById('file-input').click()">Upload Photos 📤</button>
-        <p id="upload-status" class="upload-status"></p>
-      </div>
-
-      <!-- رابط اللوكيشن -->
-      <a href="https://maps.app.goo.gl/kTk7X2qQ9ygJhDsW7" target="_blank" class="location-link">
-        📍 Event Location
-      </a>
+      <a href="https://maps.app.goo.gl/kTk7X2qQ9ygJhDsW7" target="_blank" class="location-link">📍 Event Location</a>
     </div>
 
-    <!-- الإطارات الأربعة للصور تحت -->
-    <div class="photo-frames-container">
-      <div class="frame frame-1"><img src="photo1.jpg" alt="Photo 1"></div>
-      <div class="frame frame-2"><img src="photo2.jpg" alt="Photo 2"></div>
-      <div class="frame frame-3"><img src="photo3.jpg" alt="Photo 3"></div>
-      <div class="frame frame-4"><img src="photo4.jpg" alt="Photo 4"></div>
+    <!-- الصور موزعة تحت (2 شمال و 2 يمين) -->
+    <div class="bottom-photos-container">
+      <div class="photo-group left-group">
+        <div class="frame photo-1" id="p1"><img src="photo1.jpg" alt="1"></div>
+        <div class="frame photo-2" id="p2"><img src="photo2.jpg" alt="2"></div>
+      </div>
+      <div class="photo-group right-group">
+        <div class="frame photo-3" id="p3"><img src="photo3.jpg" alt="3"></div>
+        <div class="frame photo-4" id="p4"><img src="photo4.jpg" alt="4"></div>
+      </div>
     </div>
   </div>
 
