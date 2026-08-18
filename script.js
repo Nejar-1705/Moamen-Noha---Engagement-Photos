@@ -3,7 +3,6 @@ const playAudio = () => {
   const music = document.getElementById('bg-music');
   if (music) {
     music.play().then(() => {
-      // تم التشغيل بنجاح - إزالة المستمعين
       document.removeEventListener('click', playAudio);
       document.removeEventListener('touchstart', playAudio);
     }).catch((error) => {
@@ -25,7 +24,7 @@ window.addEventListener('DOMContentLoaded', () => {
   const names = document.getElementById('glitter-names');
   const details = document.getElementById('card-details');
 
-  // 1. اختفاء شاشة الترحيب
+  // 1. اختفاء شاشة الترحيب بعد 3 ثواني (تم زيادة ثانية)
   setTimeout(() => {
     splash.style.opacity = '0';
     setTimeout(() => splash.style.display = 'none', 1000);
@@ -80,7 +79,7 @@ window.addEventListener('DOMContentLoaded', () => {
       details.classList.add('show-element');
     }, 8000);
 
-  }, 2000);
+  }, 3000); // ⏱️ زيادة التوقيت لـ 3000ms
 });
 
 // العداد التنازلي
