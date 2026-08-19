@@ -83,7 +83,7 @@ window.addEventListener('DOMContentLoaded', () => {
 });
 
 // العداد التنازلي
-const targetDate = new Date("August 21, 2026 00:00:00").getTime();
+const targetDate = new Date("August 21, 2026 20:00:00").getTime();
 setInterval(() => {
   const diff = targetDate - new Date().getTime();
   if (diff > 0) {
