@@ -93,3 +93,81 @@ setInterval(() => {
     document.getElementById("seconds").innerText = Math.floor((diff % (1000 * 60)) / 1000).toString().padStart(2, '0');
   }
 }, 1000);
+
+
+// 📷 Upload Photos
+const uploadInput = document.getElementById("photo-upload");
+const uploadStatus = document.getElementById("upload-status");
+
+const uploadURL =
+  "https://script.google.com/macros/s/AKfycbyvITMVbjTLtDvbtoZtckuwLJkHNkKlCMWecRCbfWFQmiuVnOB_FYI-DyKItLKScm39MA/exec";
+
+uploadInput.addEventListener("change", async function () {
+
+  const files = Array.from(this.files);
+
+  if (!files.length) return;
+
+  uploadStatus.innerText = `Uploading ${files.length} photo${files.length > 1 ? "s" : ""}...`;
+
+  let uploaded = 0;
+
+  for (const file of files) {
+
+    try {
+
+      const base64 = await fileToBase64(file);
+
+      const response = await fetch(uploadURL, {
+        method: "POST",
+        body: JSON.stringify({
+          file: base64,
+          type: file.type,
+          name: file.name
+        })
+      });
+
+      uploaded++;
+
+      uploadStatus.innerText =
+        `Uploading... ${uploaded} / ${files.length}`;
+
+    } catch (error) {
+
+      console.error("Upload error:", error);
+
+    }
+  }
+
+  if (uploaded === files.length) {
+    uploadStatus.innerText = "❤️ Photos uploaded successfully!";
+  } else {
+    uploadStatus.innerText =
+      `❤️ ${uploaded} of ${files.length} photos uploaded.`;
+  }
+
+  // يسمح باختيار نفس الصورة مرة تانية
+  this.value = "";
+});
+
+
+// تحويل الصورة إلى Base64
+function fileToBase64(file) {
+
+  return new Promise((resolve, reject) => {
+
+    const reader = new FileReader();
+
+    reader.onload = () => {
+
+      // بنشيل الـ data:image/...;base64, من البداية
+      const base64 = reader.result.split(",")[1];
+
+      resolve(base64);
+    };
+
+    reader.onerror = reject;
+
+    reader.readAsDataURL(file);
+  });
+}
