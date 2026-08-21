@@ -184,6 +184,38 @@ body, html {
 
 .location-btn:hover { transform: scale(1.05); }
 
+.upload-btn {
+  display: block;
+  margin: 12px auto 0;
+  color: #000000;
+  background: rgba(255, 255, 255, 0.9);
+  border: 1.5px solid #000000;
+  text-decoration: none;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 0.95rem;
+  font-weight: bold;
+  padding: 9px 24px;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.upload-btn:hover {
+  transform: scale(1.05);
+}
+
+.upload-btn:active {
+  transform: scale(0.97);
+}
+
+#upload-status {
+  margin-top: 10px;
+  font-size: 0.85rem;
+  font-style: italic;
+  min-height: 20px;
+  color: #000000;
+}
+
 .hidden-element {
   opacity: 0;
   transition: opacity 1s ease;
